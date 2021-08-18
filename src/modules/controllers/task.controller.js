@@ -22,7 +22,7 @@ module.exports.createNewTasks =  (req, res, next) => {
 };
 
 module.exports.changeTaskInfo = (req, res, next) => {
-  if ((req.body._id) && (req.body.text)) {
+  if (((req.body._id)  && (req.body.isCheck)) || (req.body._id)  && (req.body.text)) {
     Task.updateOne({_id: req.body._id}, req.body).then(result => {
       Task.find().then(result => {
         res.send({data: result});
